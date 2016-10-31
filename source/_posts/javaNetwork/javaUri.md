@@ -9,7 +9,7 @@ URI(Uniform Resource Identifier) 统一资源标识符
 
 # 形式
 
-URI的最常见的形式是统一资源定位符。
+URI的最常见的形式是统一资源定位符(URL)。
 
 URL是一种URI，所以两者非常相似，但是还是有点区别。
 
@@ -17,15 +17,15 @@ uri最多包含3个部分：
 scheme:scheme-specific-part#fragment
 
 如：
-```java
+```xml
 uri = new URI("abc://username:password@www.example.com:123/path/data?key=苹果&key2=肉#fragid1");
 scheme:				abc
-schemeSpecificPart:	//username:password@www.example.com:123/path/data?key=苹果&key2=肉
+schemeSpecificPart:		//username:password@www.example.com:123/path/data?key=苹果&key2=肉
 fragment:			fragid1
 ```
 
-没有模式部分的成为相对URI
-有模式部分的成为绝对URI
+没有模式部分的称为相对URI
+有模式部分的称为绝对URI
 可以用方法**public boolean isAbsolute()**判断
 ```java
 public boolean isAbsolute() {
