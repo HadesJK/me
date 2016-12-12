@@ -65,3 +65,41 @@ intellij 的配置比较简单，如一下几个图所示：
 **7. 断点进入intellij中**
 
 ![](/images/java/远程调式/7.jpg)
+
+# 环境隔离
+
+让人讨厌的是，在一些大型企业中经常需要各种权限的VPN才能登陆，并且出于安全考虑，对机器做了限制，比如一些特殊的服务只能被部署在本机上的应用访问，对外部进行了隔离。
+
+这种情况下远程debug时，就需要用ssh进行端口转发了。
+
+当然首先是服务器端开始了debug模式，假设端口还是9527.
+
+```bash
+ssh -L <local port>:localhost:<remote port> user@host -p <port> [-v -v]
+```
+按上面的例子，假设远程端口是9527，那么可以设置本地端口也为9527，user@port -p <port> 就是ssh的登录
+
+-v -v 可以不加。
+
+完整的命令可以是：
+
+```bash
+ssh -L 9527:localhost:9527 yifan@10.13.81.180 -p 10086 
+```
+
+在intellij中配置的host为 **localhost**， port为 **9527**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
