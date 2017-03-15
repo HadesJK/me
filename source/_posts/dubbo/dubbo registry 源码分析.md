@@ -59,7 +59,7 @@ private File file;
 // 从代码的实现中可以看出，会有一个对应fileName.lock的文件来作为进程锁，对file进行写操作
 private final Properties properties = new Properties();
 
-// 文件缓存定时写入
+// 文件缓存异步写入线程
 private final ExecutorService registryCacheExecutor = Executors.newFixedThreadPool(1, new NamedThreadFactory("DubboSaveRegistryCache", true));
 
 //是否是同步保存文件
@@ -228,7 +228,7 @@ private final ZookeeperClient zkClient;
 
 1. 调用父类的构造方法，即执行了AbstractRegistry，FailbackRegistry
 2. 初始化dubbo的根结点，默认是/dubbo，实际使用中，这个参数一般使用默认值
-3. zkClient连接zk集群，此时已和zk保持TCP长连接
+3. zkClient连接zk集群【异步】
 4. 添加一个watch，当连接建立后，会执行 recover方法
 这个watch中对连接建立后的异步处理是：
 zk连接异步建立，可能需要很长时间（dubbo服务已经开始发布和订阅【dubbo与zk建立连接需要时间】，甚至发布和订阅已经执行完了，但是zk集群竟然都没启动），这时候对之前的服务需要重新发布与订阅，但是这个动作是交给FailbackRegistry的重试任务去执行的。
