@@ -2,6 +2,7 @@
 title: dubbo registry 源码分析
 date: 2017-03-14 20:32:24
 categories:
+- dubbo
 ---
 
 # 主要类图关系
