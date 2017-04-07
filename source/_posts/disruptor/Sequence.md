@@ -67,6 +67,10 @@ long 字段原子写，值立即刷入内存
 public native void putLongVolatile(Object var1, long var2, long var4);
 ```
 
+# Sequence 类图
+
+![Sequence](/images/disruptor/Sequence.png)
+
 # Sequence 源码分析
 
 Sequence 是 Disruptor 的核心，这里称为序号
