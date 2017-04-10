@@ -15,7 +15,7 @@ WaitStrategy 有2个方法，分别给生产者和消费者使用
 
 # SequenceBarrier
 
-![SequenceBarrier](/images/SequenceBarrier.png)
+![SequenceBarrier](/images/disruptor/SequenceBarrier.png)
 
 SequenceBarrier 是给消费者使用的，
 通过 SequenceBarrier ，消费者可以实现一些复杂的序号操作
@@ -276,5 +276,4 @@ waitFor 方法只做了一件事情，等待前置处理器处理完成
 多生产者中，当生产者1获取到序号 13，生产者2获取到14；生产者1没发布，生产者2发布，会导致获取的可用序号为12，而sequence为13！
 消费者通过 WaitStrategy 获得的序号是 13，但是再通过 MultiProducerSequencer.getHighestPublishedSequence 返回的是12
 这时候如果消费者处理完12，请求下一个13时，返回的可用序号仍然是12！
-这就是为毛消费者获取到序号后，需要自行判断
-对于的代码段之前已经分析。
+这就是为毛消费者获取到序号后，需要自行判断(BatchEventProcessor 中分析)
