@@ -210,6 +210,7 @@ public abstract class AbstractSequencer implements Sequencer {
      * 表示队列尾的 Sequence 并没有在 RingBuffer 中，
      * 而是由消费者维护，生产者为了防止数据被覆盖，需要跟踪消费者的消费信息
      * 控制序号组 gatingSequences 来维护消费者的消费位置信息
+     * 可想而知，当消费者添加到 Disruptor 时，这个数组就需要维护了
      */
     protected volatile Sequence[] gatingSequences = new Sequence[0];
 

@@ -1,5 +1,5 @@
 ---
-title: 生产者生产数据
+title: 生产者发布事件
 date: 2017-04-07 11:26:42
 categories:
 - disruptor
